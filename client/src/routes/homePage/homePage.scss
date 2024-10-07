@@ -1,0 +1,150 @@
+@import "../../responsive.scss";
+
+.homePage {
+  display: flex;
+  height: 100%;
+  /* Add the background image */
+  background-image: url('doc.jpeg');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+
+  /* Optional: Add an overlay for better text readability */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+    z-index: 1;
+  }
+
+  .textContainer {
+    flex: 3;
+    position: relative; /* To position elements above the overlay */
+    z-index: 2; /* Ensure text is above the overlay */
+
+    .wrapper {
+      padding-right: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      height: 100%;
+
+      @include lg {
+        padding-right: 50px;
+      }
+
+      @include md {
+        padding: 0;
+      }
+
+      @include sm {
+        justify-content: flex-start;
+      }
+
+      .title {
+        font-size: 60px;
+
+        @include lg {
+          font-size: 48px;
+        }
+      }
+
+      .buttonContainer {
+        margin-top: 20px;
+
+        .animated-button {
+          background: linear-gradient(45deg, #ff6b6b, #ffcc00, #00bfff, #32cd32);
+          width: 108%;
+          background-size: 400% 400%;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          padding: 15px 30px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+          text-align: center;
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+          animation: gradientAnimation 5s ease infinite;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          .button-text {
+            display: block;
+          }
+
+          .button-subtext {
+            display: block;
+            font-size: 14px;
+            margin-top: 5px;
+          }
+        }
+      }
+
+      .facilitatedSection,
+      .healthSupportedSection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+
+        @include sm {
+          justify-content: flex-start;
+          margin-top: 20px;
+        }
+
+        img {
+          width: 45px;
+          margin-right: 20px;
+          height: 45px;
+        }
+
+        h2 {
+          font-size: 24px;
+          color: #333;
+          font-weight: bold;
+          margin: 0;
+
+          @include lg {
+            font-size: 22px;
+          }
+
+          @include md {
+            font-size: 20px;
+          }
+
+          @include sm {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  /* Remove or adjust the imgContainer if not needed */
+  .imgContainer {
+    display: none;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

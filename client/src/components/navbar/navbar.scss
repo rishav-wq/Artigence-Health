@@ -1,0 +1,114 @@
+@import "../../responsive.scss";
+
+nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fcf5f3;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1000; /* Ensure it's on top */
+
+  .left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 40px;
+      }
+
+      span {
+        font-weight: bold;
+        font-size: 24px;
+        color: #333;
+
+        @include sm {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    .navLinks {
+      display: flex;
+      gap: 30px;
+
+      a {
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #ffcc00;
+          scale: 1.05;
+        }
+
+        @include sm {
+          display: none;
+        }
+      }
+    }
+
+    .menuIcon {
+      display: none;
+      z-index: 999;
+
+      img {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+      }
+
+      @include sm {
+        display: block;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 50%;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      transition: right 0.4s ease;
+      z-index: 998;
+
+      &.active {
+        right: 0;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+        margin: 20px 0;
+
+        &:hover {
+          color: #ffcc00;
+          scale: 1.05;
+        }
+      }
+    }
+  }
+}
+
